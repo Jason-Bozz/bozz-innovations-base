@@ -1,4 +1,4 @@
-name: bozz-innovations
+name: bozz-innovations-base
 type: drupal11
 docroot: public_html
 php_version: "8.3"
@@ -15,6 +15,19 @@ web_environment: []
 corepack_enable: true
 
 # Key features of DDEV's config.yaml:
+
+# Many DDEV commands can be extended to run tasks before or after the
+# DDEV command is executed, for example "post-start", "post-import-db",
+# "pre-composer", "post-composer"
+# See https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/ for more
+# information on the commands that can be extended and the tasks you can define
+# for them. Example:
+hooks:
+post-import-db:
+    - exec: drush cr && drush uli
+#   - exec: drush sql:sanitize
+#   - exec: drush updatedb
+#   - exec: drush cache:rebuild
 
 # name: <projectname> # Name of the project, automatically provides
 #   http://projectname.ddev.site and https://projectname.ddev.site
@@ -289,15 +302,3 @@ corepack_enable: true
 # additional_hostnames: []
 # can have their intended affect. 'override_config' affects only behavior of the
 # config.*.yaml file it exists in.
-
-# Many DDEV commands can be extended to run tasks before or after the
-# DDEV command is executed, for example "post-start", "post-import-db",
-# "pre-composer", "post-composer"
-# See https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/ for more
-# information on the commands that can be extended and the tasks you can define
-# for them. Example:
-#hooks:
-# post-import-db:
-#   - exec: drush sql:sanitize
-#   - exec: drush updatedb
-#   - exec: drush cache:rebuild
