@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ */
+function base_installation_install() {
+  // Set admin role
+  $user = User::load(1);
+  $user->addRole('administrator');
+  $user->save();
+
+  drupal_flush_all_caches();
+}

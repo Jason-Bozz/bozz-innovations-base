@@ -1,0 +1,119 @@
+name: Base Installation
+type: profile
+description: A base profile for initializing new Drupal projects.
+core_version_requirement: ^10 || ^11
+
+dependencies:
+  # 🌟 Admin & UI
+  - admin_toolbar
+  - rename_admin_paths
+  - help
+  - contextual
+  - shortcut
+  - menu_ui
+  - block
+  - gin_toolbar
+
+  # 🔐 Security & Privacy
+  - eu_cookie_compliance
+  - redirect
+
+  # 📬 Mail
+  - mailsystem
+  - phpmailer_smtp
+  - queue_mail
+
+  # 📐 Content Structuring
+  - paragraphs
+  - field_group
+  - taxonomy
+  - node
+  - options
+  - ckeditor5
+
+  # 🧰 Developer Tools
+  - devel
+  - site_audit
+  - version_checker
+
+  # 🔎 Search & SEO
+  - search_api
+  - simple_sitemap
+
+  # 🧩 Content Management
+  - views
+  - view_unpublished
+  - linkit
+  - webform
+  - quick_node_clone
+  - menu_block
+
+  # 🎨 Theming & Media
+  - svg_image
+  - svg_image_field
+  - responsive_image
+  - layout_builder
+  - twig_tweak
+  - breakpoint
+
+  # 🌍 Internationalization
+  - config_translation
+
+  # 🔧 Misc & System
+  - automated_cron
+  - syslog
+  - pathauto
+  - token
+
+install:
+  - admin_toolbar
+  - rename_admin_paths
+  - help
+  - contextual
+  - shortcut
+  - menu_ui
+  - block
+  - eu_cookie_compliance
+  - redirect
+  - mailsystem
+  - phpmailer_smtp
+  - queue_mail
+  - paragraphs
+  - field_group
+  - taxonomy
+  - node
+  - options
+  - ckeditor5
+  - site_audit
+  - version_checker
+  - search_api
+  - simple_sitemap
+  - views
+  - view_unpublished
+  - linkit
+  - webform
+  - quick_node_clone
+  - menu_block
+  - svg_image
+  - svg_image_field
+  - responsive_image
+  - layout_builder
+  - twig_tweak
+  - breakpoint
+  - config_translation
+  - automated_cron
+  - syslog
+  - pathauto
+  - token
+
+themes:
+  - gin
+  - claro
+  - base
+  - classy
+  - stark
+
+theme:
+  default: base
+  admin: gin
+

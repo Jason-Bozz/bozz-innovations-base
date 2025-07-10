@@ -1,0 +1,2 @@
+admin: gin
+default: base  # or 'base' if you're using a custom front-end theme
