@@ -1,10 +1,24 @@
-name: Base
+name: base
 type: theme
-core_version_requirement: ^11
-base theme: classy
+'base theme': stable9
+version: 1.0.0
 libraries:
-  - base/global
-regions:
-  header: 'Header'
-  content: 'Content'
-  footer: 'Footer'
+  - base/base
+  - base/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - base/user
+  core/drupal.dropbutton:
+    - base/dropbutton
+  core/drupal.dialog:
+    - base/dialog
+  file/drupal.file:
+    - base/file
+  core/drupal.progress:
+    - base/progress
+  core/drupal.tablesort:
+    - base/drupal.tablesort
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.2.2'
