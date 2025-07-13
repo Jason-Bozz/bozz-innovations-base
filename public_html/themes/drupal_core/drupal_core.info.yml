@@ -1,0 +1,22 @@
+name: drupal_core
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+libraries:
+  - drupal_core/base
+  - drupal_core/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - drupal_core/user
+  core/drupal.dropbutton:
+    - drupal_core/dropbutton
+  core/drupal.dialog:
+    - drupal_core/dialog
+  file/drupal.file:
+    - drupal_core/file
+  core/drupal.progress:
+    - drupal_core/progress
+core_version_requirement: ^10 || ^11
+generator: 'starterkit_theme:10.0.9'
