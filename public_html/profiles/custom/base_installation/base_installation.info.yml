@@ -13,6 +13,7 @@ dependencies:
   - menu_ui
   - block
   - gin_toolbar
+  - gin_login
 
   # 🔐 Security & Privacy
   - eu_cookie_compliance
@@ -68,6 +69,7 @@ dependencies:
 install:
   - admin_toolbar
   - rename_admin_paths
+  - gin_login
   - help
   - contextual
   - shortcut

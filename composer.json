@@ -27,6 +27,7 @@
         "drupal/eu_cookie_compliance": "^1.27",
         "drupal/field_group": "^4.0",
         "drupal/gin": "^5.0",
+        "drupal/gin_login": "^2.1",
         "drupal/linkit": "^7.0",
         "drupal/mailsystem": "^4.5",
         "drupal/menu_block": "^1.14",
