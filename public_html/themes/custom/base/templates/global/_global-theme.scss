@@ -1,0 +1,23 @@
+/* Bulma Themes */
+@charset "utf-8";
+
+@use "node_modules/bulma/sass/utilities/css-variables" as cv;
+
+@use "node_modules/bulma/sass/themes/light";
+@use "node_modules/bulma/sass/themes/setup";
+
+:root {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}
+
+// prefers-color-scheme: light
+@include cv.system-theme($name: "light") {
+  @include light.light-theme;
+}
+
+// :root, [data-theme=light], .theme-light
+@include cv.bulma-theme($name: "light") {
+  @include light.light-theme;
+  @include setup.setup-theme;
+}

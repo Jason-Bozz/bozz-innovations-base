@@ -1,0 +1,5 @@
+paragraph--text-half:
+  version: VERSION
+  css:
+    component:
+      paragraph--text-half.css: {}

@@ -1,0 +1,16 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+  {{ attach_library('base/paragraph--text-full') }}
+{% endblock %}
+
+{% block paragraph %}
+  {% set classes = classes|merge([
+    'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_txt_full_text }}
+  </div>
+{% endblock %}

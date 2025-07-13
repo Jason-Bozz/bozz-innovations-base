@@ -1,0 +1,5 @@
+paragraph--button:
+  version: VERSION
+  css:
+    component:
+      paragraph--button.css: {}

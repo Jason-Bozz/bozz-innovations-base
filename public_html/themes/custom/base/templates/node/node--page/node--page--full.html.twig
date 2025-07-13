@@ -1,0 +1,16 @@
+{% extends 'node.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/node--page--full') }}
+{% endblock %}
+
+{% block node %}
+
+<main class="content-page">
+  {% include "@base/templates/partials/hero/hero.html.twig" %}
+  {% include "@base/templates/partials/content-section.html.twig" %}
+  {{ drupal_entity('webform', 'test') }}
+</main>
+{% endblock %}
+
+{# {% block after %}{% endblock %} #}

@@ -1,0 +1,19 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+  {{ attach_library('base/paragraph--quote') }}
+{% endblock %}
+
+{% block paragraph %}
+  {% set classes = classes|merge([
+     'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+  <div{{ attributes.addClass(classes) }}>
+    <blockquote class="blockquote">
+      <q>{{ content.field_quote_quote[0]['#context'].value }}</q>
+      <cite>{{ content.field_quote_author }}</cite>
+    </blockquote>
+  </div>
+{% endblock %}

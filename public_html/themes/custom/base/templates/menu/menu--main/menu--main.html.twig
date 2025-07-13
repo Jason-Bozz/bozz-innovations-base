@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{{ attach_library('base/menu--main') }}
+
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/1.x/tags/macro.html
+#}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass(['nav', 'navbar-nav']).setAttribute('id', 'mainnav') }}>
+    {% else %}
+      <ul>
+    {% endif %}
+    {% for item in items %}
+      {% set classes = [
+        (menu_level == 0) ? 'nav-item', (item.below and menu_level == 0) ? 'dropdown', (path("<current>") == item.url.toString() or item.in_active_trail) ? 'active',
+      ] %}
+      <li{{ item.attributes.addClass(classes) }}>
+        {{ link(item.title, item.url, item.attributes.addClass("nav-link")) }}
+        {% if item.below %}
+        <div class="dropdown-menu">
+          <div class="dropdown-menu__inner">
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          </div>
+        </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% macro mobile_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass(['nav', 'navbar-nav']).setAttribute('id', 'mobilenav') }}>
+    {% else %}
+      <ul>
+    {% endif %}
+    {% for item in items %}
+      <li{{ item.attributes.addClass(item.original_link.pluginDefinition.menu_name).removeClass("nav-item").removeClass("nav-link") }}>
+        {{ link(item.title, item.url) }}
+        {% if item.below %}
+            <button class="arrow" title="Open {{ item.title }} menu"></button>
+            {{ menus.mobile_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+<div class="navbar-header is-hidden-touch is-flex-desktop">
+  {{ menus.menu_links(items, attributes, 0) }}
+</div>
+
+<div id="mobilemenu" class="is-hidden-desktop slide" role="menu" data-open="false">
+  {% set utils = drupal_menu('utilities', 0, 3, true)['#items'] %}
+  {% set utils = utils|filter(link => (link['url'].isExternal or link['url'].routeParameters['node'] != 1)) %}
+  {% set items = items|merge(utils) %}
+  {{ menus.mobile_links(items, attributes, 0) }}
+</div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "{{ url('<front>') }}"
+}
+</script>

@@ -1,0 +1,84 @@
+@import "../../base/_base.scss";
+@import "./mobile-menu.scss";
+
+header {
+  z-index: 500;
+  background-color: $d_blue;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  min-height: toRem(68);
+
+  .logo {
+    img {
+      max-width: 1.5625rem;
+
+      @include desktop {
+        max-width: 5.625rem;
+      }
+    }
+  }
+
+  @include desktop {
+    padding-block: toRem(20);
+    position: relative;
+    min-height: auto;
+  }
+
+  .hamburger {
+    position: relative;
+    width: toRem(44);
+    height: toRem(44);
+    margin-left: auto;
+
+    span {
+      position: absolute;
+      left: 50%;
+
+      translate: -50%;
+
+      background-color: $white;
+
+      width: toRem(25);
+      height: toRem(3);
+    }
+
+    span:nth-child(1) {
+      top: toRem(12);
+    }
+
+    span:nth-child(2) {
+      top: 50%;
+      translate: -50% -50%;
+      transition: opacity 0.15s ease;
+    }
+
+    span:nth-child(3) {
+      bottom: toRem(12);
+    }
+
+    span:nth-child(1),
+    span:nth-child(3) {
+      transition: top 0.3s ease, rotate 0.3s ease;
+    }
+
+    &.is-active {
+      span:nth-child(1) {
+        top: 50%;
+        translate: -50% -50%;
+        rotate: 45deg;
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        top: 50%;
+        translate: -50% -50%;
+        rotate: -45deg;
+      }
+    }
+  }
+}

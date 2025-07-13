@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming taxonomy terms in the base theme.
+ */
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function base_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements'])) {
+    $bundle_id = '';
+    $display_id = '';
+    $elem = $variables['elements'];
+    $tax = $elem['#taxonomy_term'];
+
+    // Get taxonomy bundle handle.
+    if (isset($elem['name']) && isset($elem['name']['#bundle'])) {
+      $bundle_id = str_replace('-', '_', $elem['name']['#bundle']);
+    }
+
+    // Get display id.
+    if (isset($elem['#view_mode'])) {
+      $display_id = str_replace('-', '_', $elem['#view_mode']);
+    }
+
+    // Overwrite default suggestions.
+    if ($display_id && $bundle_id) {
+      $suggestions = [
+        $variables['theme_hook_original'] . '__' . $bundle_id,
+        $variables['theme_hook_original'] . '__' . $bundle_id . '__' . $display_id,
+        $variables['theme_hook_original'] . '__' . $tax->id(),
+      ];
+    }
+  }
+
+  return $suggestions;
+}

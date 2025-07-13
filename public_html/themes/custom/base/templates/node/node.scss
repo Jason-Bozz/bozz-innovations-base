@@ -1,0 +1,18 @@
+// CSS for all nodes
+@import "../base/_base.scss";
+
+main {
+}
+
+section {
+  padding: 50px 0;
+}
+
+.intro {
+  background-color: $d_blue;
+
+  &__heading {
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+}

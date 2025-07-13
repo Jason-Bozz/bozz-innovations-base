@@ -1,0 +1,5 @@
+menu--footer:
+  version: version
+  css:
+    component:
+      menu--footer.css: {}

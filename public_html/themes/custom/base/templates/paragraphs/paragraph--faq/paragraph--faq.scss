@@ -1,0 +1,82 @@
+@import "../../base/_base.scss";
+
+.paragraph--faq {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  details {
+    position: relative;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    border-bottom: 2px solid #000;
+
+    &[open] {
+      summary {
+        margin-bottom: 10px;
+
+        svg {
+          transform: rotate(0deg);
+          animation: rotate_up 0.3s ease-in-out 0s;
+        }
+      }
+    }
+
+    >summary {
+      cursor: pointer;
+      padding: 0.5rem 0;
+      color: $black;
+      list-style: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: margin 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+      justify-content: space-between;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      svg {
+        transform: rotate(180deg);
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: rotate_down 0.3s ease-in-out 0s;
+      }
+    }
+
+    @keyframes rotate_down {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(180deg);
+      }
+    }
+
+    @keyframes rotate_up {
+      0% {
+        transform: rotate(180deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  details details>summary>* {
+    display: inline;
+  }
+
+  details>.faq__item {
+    margin-top: 0;
+    padding: 1rem 0;
+
+    * {
+      color: $black;
+    }
+  }
+}

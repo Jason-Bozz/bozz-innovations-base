@@ -1,0 +1,15 @@
+@use "sass:math";
+
+$gap: 32px;
+
+$fullhd: 1408px+(2 * $gap);
+$widescreen: 1216px+(2 * $gap);
+$desktop: 1024px+(2 * $gap);
+$tablet: 769px+(2 * $gap);
+$mobile: 768px+(2 * $gap);
+
+// containers
+$container-offset: (2 * $gap);
+$containter-max-widht: $fullhd;
+$container-space: 1.25rem;
+$variable-columns: (math.div($gap, 2));

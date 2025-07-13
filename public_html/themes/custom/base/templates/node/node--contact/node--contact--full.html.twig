@@ -1,0 +1,21 @@
+{% extends 'node.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/node--page--full') }}
+{% endblock %}
+
+{% block node %}
+<main id="main" class="contact-page">
+  {% include "@base/templates/partials/hero/hero.html.twig" %}
+  <section class="contentblock">
+    <div class="container is-fullhd">
+      <div class='columns contentblocks'>
+        {# see componenets/paragraphs #}
+        {{ drupal_entity('webform', 'contact') }}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{# {% block after %}{% endblock %} #}

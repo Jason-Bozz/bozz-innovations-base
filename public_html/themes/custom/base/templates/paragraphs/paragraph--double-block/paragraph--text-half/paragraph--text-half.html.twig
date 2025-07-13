@@ -1,0 +1,14 @@
+{% block before %}
+  {{ attach_library('base/paragraph--text-half') }}
+{% endblock %}
+
+{% block paragraph %}
+  {% set classes = classes|merge([
+    'column',
+    'is-6',
+    'item-text',
+  ]) %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_text_half.0 }}
+  </div>
+{% endblock %}

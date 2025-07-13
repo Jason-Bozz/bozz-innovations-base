@@ -1,0 +1,48 @@
+@import "../../base/_base.scss";
+
+section.subnav {
+  background-color: $d_bluelight;
+  position: relative;
+  min-height: 310px;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+
+  #navbar-subnav {
+    * {
+      color: $white;
+    }
+
+    h3 {
+      font-size: toRem(30);
+      line-height: toRem(38);
+      margin-bottom: 1.875rem;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+      li {
+        margin: 0;
+        padding: 0;
+
+        .nav-link {
+          padding: 0;
+          width: fit-content;
+          font-weight: bold;
+          font-size: 1.125rem;
+          line-height: 1.5rem;
+
+          &.is-active,
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

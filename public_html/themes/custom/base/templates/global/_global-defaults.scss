@@ -1,0 +1,67 @@
+* {
+  touch-action: manipulation;
+}
+
+html {
+  overflow-y: auto;
+}
+
+#page,
+.dialog-off-canvas-main-canvas {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+#block-base-content {
+  flex: 1 0 auto;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+img {
+  aspect-ratio: auto 1 / 1;
+  width: 100%;
+  display: block;
+}
+
+.container {
+  padding-left: $container-space;
+  padding-right: $container-space;
+}
+
+#skip-to-content {
+  position: absolute;
+  left: 20px;
+  top: -100px;
+  background: #4a4a4a;
+  padding: 20px;
+  z-index: 999 !important;
+  color: $white;
+  transition: top 0.2s ease-in-out;
+
+  @include setFont("Arial", 600, normal);
+
+  &:focus {
+    top: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+main {
+  margin-top: toRem(68);
+
+  @include desktop {
+    margin-top: unset;
+  }
+}

@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming views in the base theme.
+ */
+
+/**
+ * Implements hook_preprocess_views_view__search_results__page().
+ */
+function base_preprocess_media__video(&$variables) {
+  $unique_id = hash('crc32b', uniqid());
+  $variables['unique_id'] = $unique_id;
+}
+
+/**
+ * Implements hook_preprocess_media_oembed_iframe().
+ */
+function base_preprocess_media_oembed_iframe(array &$variables) {
+  $resource = $variables['resource'];
+  if ($resource->getProvider()->getName() == "YouTube") {
+    if (\Drupal::request()->query->get('autoplay') && \Drupal::request()->query->get('autoplay') == 1) {
+      $feature = "?feature=oembed&rel=0&autoplay=1";
+    }
+    else {
+      $feature = "?feature=oembed&rel=0";
+    }
+    // We are rendering a YouTube video,
+    // so modify the URL of the video so that it only shows
+    // related videos from the same channel.
+    // The video's markup is only available as a string,
+    // so we need to use str_replace() to modify the URL.
+    $variables['media'] = str_replace('?feature=oembed', $feature, (string) $variables['media']);
+  }
+  elseif ($resource->getProvider()->getName() == "Vimeo") {
+    if (\Drupal::request()->query->get('autoplay') && \Drupal::request()->query->get('autoplay') == 1) {
+      $feature = "feature=oembed&autoplay=1";
+    }
+    else {
+      $feature = "feature=oembed";
+    }
+
+    $variables['media'] = preg_replace('~(\?|&)amp;app_id=*\d*~', '&' . $feature, (string) $variables['media']);
+
+  }
+}

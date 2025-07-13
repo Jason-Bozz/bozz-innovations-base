@@ -1,0 +1,11 @@
+{% if content.field_global_content.0 %}
+  <section class="contentblock">
+    <div class="container is-fullhd">
+      <div class="columns is-multiline is-centered contentblocks">
+        <h2 class="is-sr-only">{{ "Page content"|t }}</h2>
+        {# see componenets/paragraphs #}
+        {{ content.field_global_content }}
+      </div>
+    </div>
+  </section>
+{% endif %}

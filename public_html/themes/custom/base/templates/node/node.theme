@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Preprocess for nodes.
+ */
+
+/**
+ * Implements template_preprocess_hook().
+ */
+function base_preprocess_node(&$variables, $hook) {
+  // Create the possibility to use more specific preprocess
+  // function for more specific nodes.
+  $function = __FUNCTION__ . '__' . $variables['node']->getType();
+  if (function_exists($function)) {
+    $function($variables, $hook);
+  }
+}

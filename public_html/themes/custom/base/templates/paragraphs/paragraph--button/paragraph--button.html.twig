@@ -1,0 +1,19 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+  {{ attach_library('base/paragraph--button') }}
+{% endblock %}
+
+{% block paragraph %}
+  {% set classes = classes|merge([
+    'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+  <div{{ attributes.addClass(classes) }}>
+    <a href="{{ content.field_button_link[0]['#url'] }}"
+      class="btn btn--secondary">
+      {{ content.field_button_link[0]['#title'] }}
+    </a>
+  </div>
+{% endblock %}

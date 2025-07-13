@@ -1,0 +1,5 @@
+paragraph--double-block:
+  version: VERSION
+  css:
+    component:
+      paragraph--double-block.css: {}

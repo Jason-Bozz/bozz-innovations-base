@@ -1,0 +1,23 @@
+@import "../../base/_base.scss";
+
+.paragraph--image {
+  .image {
+    margin: 0;
+
+    img {
+      border-radius: 15px;
+    }
+  }
+
+  figcaption {
+    padding: 1.25rem 0;
+    position: relative;
+    color: $black;
+
+    &:before {
+      content: "-";
+      padding-right: 5px;
+      z-index: 2;
+    }
+  }
+}

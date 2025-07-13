@@ -1,0 +1,5 @@
+menu--subnav:
+  version: version
+  css:
+    component:
+      menu--subnav.css: {}

@@ -1,0 +1,14 @@
+@import "../../base/_base.scss";
+@import "node_modules/bulma/sass/form";
+
+section.form-confirmation-page {
+  margin-block: 4.5rem;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 12px;
+    color: $black !important;
+  }
+}

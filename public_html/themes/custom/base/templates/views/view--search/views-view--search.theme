@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Page template for the search overview page.
+ */
+
+/**
+ * Implements hook_views_view().
+ */
+function base_preprocess_views_view__search(&$view) {
+  if (\Drupal::request()->get('keywords')) {
+    $view['keyword'] = \Drupal::request()->get('keywords');
+  }
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $vars['language'] = $language;
+}

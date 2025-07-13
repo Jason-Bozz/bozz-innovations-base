@@ -1,0 +1,19 @@
+@import "../../base/_base.scss";
+
+.paragraph--double-block {
+  .columns {
+    &:has(.item-media) {
+      .item-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    .item-media {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+  }
+}

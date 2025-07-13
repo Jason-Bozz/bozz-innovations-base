@@ -1,0 +1,46 @@
+// @font-face declarations
+// use https://transfonter.org/
+
+@font-face {
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  font-family: "Raleway";
+  src: url("/assets/fonts/raleway/raleway-Light.eot");
+  src: url("/assets/fonts/raleway/raleway-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/raleway/raleway-Light.woff2") format("woff2"),
+    url("/assets/fonts/raleway/raleway-Light.woff") format("woff"),
+    url("/assets/fonts/raleway/raleway-Light.ttf") format("truetype"),
+    url("/assets/fonts/raleway/raleway-Light.svg#raleway-Light") format("svg");
+}
+
+@font-face {
+  font-weight: normal;
+  font-style: initial;
+  font-display: swap;
+  font-family: "Raleway";
+  src: url("/assets/fonts/raleway/raleway-regular.eot");
+  src: url("/assets/fonts/raleway/raleway-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/raleway/raleway-regular.woff2") format("woff2"),
+    url("/assets/fonts/raleway/raleway-regular.woff") format("woff"),
+    url("/assets/fonts/raleway/raleway-regular.ttf") format("truetype"),
+    url("/assets/fonts/raleway/raleway-regular.svg#raleway-regular")
+      format("svg");
+}
+
+@font-face {
+  font-weight: bolder;
+  font-style: initial;
+  font-display: swap;
+  font-family: "Raleway";
+  src: url("/assets/fonts/raleway/raleway-semibold.eot");
+  src: url("/assets/fonts/raleway/raleway-semibold.eot?#iefix")
+      format("embedded-opentype"),
+    url("/assets/fonts/raleway/raleway-semibold.woff2") format("woff2"),
+    url("/assets/fonts/raleway/raleway-semibold.woff") format("woff"),
+    url("/assets/fonts/raleway/raleway-semibold.ttf") format("truetype"),
+    url("/assets/fonts/raleway/raleway-semibold.svg#raleway-semibold")
+      format("svg");
+}

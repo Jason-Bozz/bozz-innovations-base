@@ -1,0 +1,5 @@
+webform:
+    version: VERSION
+    css:
+      component:
+        webform.css: {}

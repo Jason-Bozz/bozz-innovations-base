@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+{% if content %}
+  {% set url = file_url(content.field_media_document.0['#file'].getFileUri()) %}
+  {% set filename = content.field_media_document.0['#file'].getFilename() %}
+  {% set file_extension = filename|split(".")|last %}
+  {% set file_size = content.field_media_document.0["#file"].getSize() %}
+  {% set file_size = file_size / 1000 %}
+  {% set file_size = (file_size > 1000) ? (file_size / 1000)|round ~ "MB" : file_size|round ~ "KB" %}
+  <a href="{{ url }}" class="btn btn-download">{% if elements['#custom_title'] is defined %}{{ elements['#custom_title'] }}{% else %}Download het bestand{% endif %}&nbsp;({{ file_extension|upper }}, {{ file_size }})</a>
+{% endif %}

@@ -1,0 +1,10 @@
+@import "../../base/_base.scss";
+
+footer {
+  padding: 1.25rem 0;
+  background-color: $d_bluelight;
+
+  #block-footer-menu {
+    display: none;
+  }
+}

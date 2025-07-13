@@ -1,0 +1,181 @@
+/*........................................................*\
+            TYPO
+\*........................................................*/
+
+// add the basic typography of the website here
+// some can and will be overruled by other styling files
+// !!!!additional changes like befores and after will
+
+// base font
+@import "../base/base.scss";
+
+html {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+html,
+body {
+  font-family: $primary-font;
+}
+
+main {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    color: $black;
+  }
+
+  h1 {
+    font-size: toRem(38);
+    line-height: toRem(49);
+
+    @include desktop {
+      font-size: toRem(62);
+      line-height: toRem(66);
+    }
+  }
+
+  h2 {
+    font-size: toRem(24);
+    line-height: toRem(47);
+
+    @include desktop {
+      font-size: toRem(38);
+      line-height: toRem(49);
+    }
+  }
+
+  h3 {
+    font-size: toRem(22);
+    line-height: toRem(28);
+
+    @include desktop {
+      font-size: toRem(30);
+      line-height: toRem(38);
+    }
+  }
+
+  h4 {
+    font-size: toRem(18);
+    line-height: toRem(26);
+
+    @include desktop {
+      font-size: toRem(22);
+      line-height: toRem(28);
+    }
+  }
+
+  h5 {
+    font-size: toRem(16);
+    line-height: toRem(22);
+  }
+
+  h6 {
+    font-size: toRem(14);
+    line-height: toRem(20);
+  }
+
+  //paragraphs, lists, tables
+  p,
+  li,
+  td,
+  th {
+    font-size: toRem(16);
+    line-height: toEm(23);
+    font-weight: normal;
+    color: $black;
+
+    em,
+    i {
+      font-style: italic;
+    }
+
+    strong,
+    b {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    color: $d_blue;
+
+    &:hover {
+      color: $d_blue;
+      text-decoration: none;
+    }
+  }
+
+  //unordered list
+
+  ul {
+    padding: 0 0 0 20px;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 1rem;
+
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-bottom: 0.3125rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  //ordered list
+  ol {
+    padding: 0;
+    list-style: none;
+    counter-reset: custom;
+
+    ol {
+      padding: 0 0 0 20px;
+    }
+
+    li {
+      position: relative;
+      counter-increment: custom;
+      padding-left: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      &::before {
+        padding-left: 2px;
+        content: counter(custom);
+        font-weight: bold;
+      }
+    }
+  }
+
+  table,
+  td,
+  th {
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 15px;
+  }
+
+}

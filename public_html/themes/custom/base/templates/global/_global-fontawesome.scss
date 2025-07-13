@@ -1,0 +1,10 @@
+// Change path to fontawesome font files
+
+$fa-font-path: "/assets/fonts/webfonts" !default;
+
+// FONTAWESOME import what you need! //
+@import "node_modules/@fortawesome/fontawesome-pro/scss/fontawesome.scss";
+@import "node_modules/@fortawesome/fontawesome-pro/scss/brands.scss";
+@import "node_modules/@fortawesome/fontawesome-pro/scss/regular.scss";
+@import "node_modules/@fortawesome/fontawesome-pro/scss/light.scss";
+@import "node_modules/@fortawesome/fontawesome-pro/scss/solid.scss";

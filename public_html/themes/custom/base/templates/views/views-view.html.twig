@@ -30,8 +30,7 @@
  * @see template_preprocess_views_view()
  */
 #}
-{%
-  set classes = [
+{% set classes = [
     'view',
     'view-' ~ id|clean_class,
     'view-id-' ~ id,
@@ -62,7 +61,7 @@
   {% endif %}
 
   {% if rows %}
-    <div class="view-content">
+    <div class="view-content columns is-multiline is-variable is-3">
       {{ rows }}
     </div>
   {% elseif empty %}

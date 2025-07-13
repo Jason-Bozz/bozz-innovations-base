@@ -1,0 +1,5 @@
+webform-confirmation:
+  version: VERSION
+  css:
+    component:
+      webform-confirmation.css: {}

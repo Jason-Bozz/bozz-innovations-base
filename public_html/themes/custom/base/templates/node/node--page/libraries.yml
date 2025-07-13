@@ -1,0 +1,5 @@
+node--page:
+  version: version
+  css:
+    component:
+      node--page.css: {}

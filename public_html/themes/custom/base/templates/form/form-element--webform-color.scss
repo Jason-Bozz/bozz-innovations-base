@@ -1,0 +1,21 @@
+@import "../base/_base.scss";
+
+input.form-color.form-color-medium {
+  width: toRem(40);
+  height: toRem(40);
+  border-radius: 0;
+}
+
+.input.form-color.form-color-output {
+  width: auto;
+  flex: 1;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: .375rem;
+  border-bottom-right-radius: .375rem;
+}
+
+.control.color {
+  display: flex;
+  flex-wrap: wrap;
+}

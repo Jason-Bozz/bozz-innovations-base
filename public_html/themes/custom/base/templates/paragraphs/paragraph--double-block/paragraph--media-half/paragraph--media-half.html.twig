@@ -1,0 +1,17 @@
+{% block before %}
+  {{ attach_library('base/paragraph--media-half') }}
+{% endblock %}
+
+{% block paragraph %}
+  {% set classes = classes|merge([
+    'column',
+    'is-6',
+    'item-media',
+  ]) %}
+  <figure{{ attributes.addClass(classes) }}>
+      {{ content.field_media_half }}
+      {% if content.field_media_half_caption.0 is defined %}
+        <figcaption>{{ content.field_media_half_caption.0 }}</figcaption>
+      {% endif %}
+  </figure>
+{% endblock %}

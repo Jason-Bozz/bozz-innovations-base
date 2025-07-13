@@ -1,0 +1,35 @@
+@mixin mobile {
+    @media screen and (width <= $mobile){
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (width >= $tablet){
+        @content;
+    }
+}
+
+@mixin touch {
+    @media screen and (width <= $desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (width >= $desktop) {
+        @content;
+    }
+}
+
+@mixin widescreen {
+    @media screen and (width >= $widescreen) {
+        @content;
+    }
+}
+
+@mixin fullhd {
+    @media screen and (width >= $fullhd) {
+        @content;
+    }
+}

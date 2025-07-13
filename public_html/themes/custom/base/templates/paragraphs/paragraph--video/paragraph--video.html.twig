@@ -1,0 +1,23 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/paragraph--video') }}
+{% endblock %}
+
+{% block paragraph %}
+{% set classes = classes|merge([
+    'video',
+    'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+<div{{ attributes.addClass(classes) }}>
+  {{ content.field_video_src }}
+    {% if content.field_video_caption[0] is defined %}
+    <figcaption class="caption">
+      {{ content.field_video_caption[0] }}
+    </figcaption>
+    {% endif %}
+  </div>
+
+  {% endblock %}

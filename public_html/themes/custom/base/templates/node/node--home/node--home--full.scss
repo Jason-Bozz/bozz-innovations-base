@@ -1,0 +1,13 @@
+@import "../../base/_base.scss";
+
+.homepage {
+  .hero {
+    padding: 5rem 0;
+    background-color: $d_blue;
+    min-height: 21.875rem;
+
+    h1 {
+      color: $white;
+    }
+  }
+}

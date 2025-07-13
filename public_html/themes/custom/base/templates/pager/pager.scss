@@ -1,0 +1,59 @@
+@import "../base/_base.scss";
+
+.pager {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+
+  ul {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+
+    li {
+      padding: 0;
+
+      a {
+        color: #000;
+        font-weight: bold;
+        border-radius: 35px;
+        display: inline-flex;
+        align-items: center;
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        justify-content: center;
+        text-decoration: none;
+
+        &:hover {
+          background-color: #e5eaeb;
+        }
+      }
+
+      &.is-active {
+        a {
+          background-color: #e5eaeb;
+
+          opacity: 1;
+        }
+      }
+    }
+
+    .pager__item {
+
+      &--previous,
+      &--next {
+        a {
+          font-size: 14px;
+          padding: 10px 10px 8px 10px;
+        }
+      }
+    }
+  }
+}

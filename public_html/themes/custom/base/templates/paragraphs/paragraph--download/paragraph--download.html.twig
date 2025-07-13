@@ -1,0 +1,36 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+  {{ attach_library('base/paragraph--download') }}
+{% endblock %}
+
+
+{% block paragraph %}
+  {# prettier-ignore-start #}
+  {% set file_url = file_url(content.field_download_file.0["#media"].field_media_document.entity.uri.value) %}
+
+  {% set classes = classes|merge([
+    'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+  {# prettier-ignore-end #}
+
+{% if paragraph.paragraph_type != paragraph.previous_paragraph_type %}
+  <div{{ attributes.addClass(classes) }}>
+{% endif %}
+
+  <div class="paragraph--download__item">
+    <a href="{{ file_url }}" class="btn btn--download" download>
+      {% if content.field_download_title[0] is defined %}
+      <i aria-hidden="true" class="fa-solid fa-download"></i> <span> {{ content.field_download_title }}</span>
+      {% else %}
+        Download
+      {% endif %}
+    </a>
+  </div>
+
+{% if paragraph.paragraph_type != paragraph.next_paragraph_type %}
+  </div>
+{% endif %}
+{% endblock %}

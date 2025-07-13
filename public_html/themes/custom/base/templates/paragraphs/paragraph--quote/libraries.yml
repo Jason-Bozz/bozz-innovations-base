@@ -1,0 +1,5 @@
+paragraph--quote:
+  version: VERSION
+  css:
+    component:
+      paragraph--quote.css: {}

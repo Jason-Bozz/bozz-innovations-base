@@ -1,0 +1,7 @@
+views-view--search:
+  version: VERSION
+  css:
+    component:
+      views-view--search.css: {}
+  js:
+    views-view--search.js: {}

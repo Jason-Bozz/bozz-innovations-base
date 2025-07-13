@@ -44,8 +44,7 @@
  * @see template_preprocess_form_element()
  */
 #}
-{%
-  set classes = [
+{% set classes = [
     'js-form-item',
     'form-item',
     'js-form-type-' ~ type|clean_class,
@@ -55,41 +54,76 @@
     title_display not in ['after', 'before'] ? 'form-no-label',
     disabled == 'disabled' ? 'form-disabled',
     errors ? 'form-item--error',
-  ]
-%}
-{%
-  set description_classes = [
+    'field',
+  ] %}
+{% set description_classes = [
     'description',
     description_display == 'invisible' ? 'visually-hidden',
-  ]
-%}
-<div{{ attributes.addClass(classes) }}>
-  {% if label_display in ['before', 'invisible'] %}
-    {{ label }}
-  {% endif %}
-  {% if prefix is not empty %}
-    <span class="field-prefix">{{ prefix }}</span>
-  {% endif %}
-  {% if description_display == 'before' and description.content %}
-    <div{{ description.attributes.addClass(description_classes) }}>
-      {{ description.content }}
+  ] %}
+
+{% if type != "radio" %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if label_display in ['before', 'invisible'] %}
+      {{ label }}
+    {% endif %}
+    {% if prefix is not empty %}
+      <span class="field-prefix">{{ prefix }}</span>
+    {% endif %}
+    {% if description_display == 'before' and description.content %}
+      <div{{ description.attributes }}>
+        {{ description.content }}
+      </div>
+    {% endif %}
+    <div class="control{% if errors %} has-icons-right{% endif %}">
+      {{ children }}
+      {% if errors %}
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+      {% endif %}
     </div>
-  {% endif %}
-  {{ children }}
-  {% if suffix is not empty %}
-    <span class="field-suffix">{{ suffix }}</span>
-  {% endif %}
-  {% if label_display == 'after' %}
-    {{ label }}
-  {% endif %}
-  {% if errors %}
-    <div class="form-item--error-message">
-      <strong>{{ errors }}</strong>
+    {% if suffix is not empty %}
+      <span class="field-suffix">{{ suffix }}</span>
+    {% endif %}
+    {% if label_display == 'after' %}
+      {{ label }}
+    {% endif %}
+    {% if errors %}
+      <p class="help is-danger">{{ errors }}</p>
+    {% endif %}
+    {% if description_display in ['after', 'invisible'] and description.content %}
+      <div{{ description.attributes.addClass(description_classes) }}>
+        {{ description.content }}
+      </div>
+    {% endif %}
+  </div>
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if prefix is not empty %}
+      <span class="field-prefix">{{ prefix }}</span>
+    {% endif %}
+    {% if description_display == 'before' and description.content %}
+      <div{{ description.attributes }}>
+        {{ description.content }}
+      </div>
+    {% endif %}
+    <div class="field">
+      <label class="b-radio radio">
+        {{ children }}
+        <span class="check"></span>
+        <span class="control-label">{{ label }}</span>
+      </label>
     </div>
-  {% endif %}
-  {% if description_display in ['after', 'invisible'] and description.content %}
-    <div{{ description.attributes.addClass(description_classes) }}>
-      {{ description.content }}
-    </div>
-  {% endif %}
-</div>
+    {% if errors %}
+      <p class="help is-danger">{{ errors }}</p>
+    {% endif %}
+    {% if description_display in ['after', 'invisible'] and description.content %}
+      <div{{ description.attributes.addClass(description_classes) }}>
+        {{ description.content }}
+      </div>
+    {% endif %}
+    {% if suffix is not empty %}
+      <span class="field-suffix">{{ suffix }}</span>
+    {% endif %}
+  </div>
+{% endif %}

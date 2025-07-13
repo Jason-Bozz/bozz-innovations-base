@@ -1,0 +1,7 @@
+// ONLY MIXINS HERE
+
+@mixin setFont($font: "Arial, sans-serif", $weight: normal, $style: normal) {
+    font-family: $font;
+    font-weight: $weight;
+    font-style: $style;
+}

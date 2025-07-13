@@ -1,0 +1,10 @@
+<ul>
+    {% for item in items %}
+        <li>
+            <a href="{{ item.content['url'] }}">
+                {{ item.content.title }}
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        </li>
+    {% endfor %}
+</ul>

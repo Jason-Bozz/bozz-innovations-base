@@ -37,7 +37,7 @@
  * @see template_preprocess_field()
  */
 #}
-{%
+{# {%
   set classes = [
     'field',
     'field--name-' ~ field_name|clean_class,
@@ -78,4 +78,8 @@
       </div>
     {% endif %}
   </div>
-{% endif %}
+{% endif %} #}
+
+{% for item in items %}
+  {{ item.content }}
+{% endfor %}

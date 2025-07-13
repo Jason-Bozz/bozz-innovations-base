@@ -1,0 +1,23 @@
+form-element--webform-checkbox:
+    version: VERSION
+    css:
+      component:
+        form-element--webform-checkbox.css: {}
+
+form-element--webform-color:
+    version: VERSION
+    css:
+      component:
+        form-element--webform-color.css: {}
+
+input--radio:
+    version: VERSION
+    css:
+      component:
+        input--radio.css: {}
+
+select:
+    version: VERSION
+    css:
+      component:
+        select.css: {}

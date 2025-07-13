@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Preprocesses for the menu main.
+ */
+
+/**
+ * Implements hook_preprocess_menu__MENU_NAME().
+ *
+ * Add active class to current-trail items.
+ */
+function base_preprocess_menu__main(&$variables) {
+  // Add vars of current node to menu.
+  $menu_items = $variables['items'];
+  // LOOP THROUGH ITEMS.
+  $segments = explode('/', ltrim(parse_url(\Drupal::request()->getRequestUri(), PHP_URL_PATH), '/'));
+  $seg1 = "/" . $segments[0];
+  foreach ($menu_items as $item) {
+    $currSeg1 = $item["url"]->toString();
+    // If active trail is true.
+    if (1 == $item['in_active_trail'] || $seg1 == $currSeg1) {
+      // Add class active.
+      $item['attributes']->addClass('active');
+    }
+    $items_below = $item['below'];
+
+    foreach ($items_below as $item_below) {
+      if ($item_below['in_active_trail'] == 1) {
+        // ADD CLASS ACTIVE.
+        $item_below['attributes']->addClass('active');
+      }
+    }
+  }
+}

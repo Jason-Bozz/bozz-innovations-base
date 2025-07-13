@@ -1,0 +1,10 @@
+menu--main:
+  version: VERSION
+  css:
+    component:
+      menu--main.css: {}
+  js:
+    menu--main.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

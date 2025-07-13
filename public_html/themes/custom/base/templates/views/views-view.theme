@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming views in the base theme.
+ */
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function base_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view'])) {
+    $view_id = str_replace('-', '_', $variables['view']->id());
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $view_id;
+    if (isset($variables['view']->current_display)) {
+      $display_id = str_replace('-', '_', $variables['view']->current_display);
+      $suggestions[] = $variables['theme_hook_original'] . '__' . $view_id . '__' . $display_id;
+    }
+  }
+
+  return $suggestions;
+}

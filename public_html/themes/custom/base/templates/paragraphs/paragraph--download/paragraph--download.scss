@@ -1,0 +1,30 @@
+@import "../../base/_base.scss";
+
+.paragraph--download {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .btn {
+    &--download {
+      align-items: flex-start;
+      background-color: $d_blue;
+      justify-content: flex-start;
+      color: $white;
+      gap: 0.625rem;
+      width: 100%;
+
+      &:hover,
+      &:focus {
+        background-color: $d_bluelight;
+      }
+
+      i {
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import "../base/_base.scss";
+@import "node_modules/bulma/sass/form";
+
+$gap: 1.5rem !default;
+
+form {
+  div[data-drupal-messages] {
+    display: none !important;
+  }
+
+  .webform-flexbox {
+    margin: 0;
+    flex-wrap: wrap;
+    gap: $gap;
+  }
+
+  .fieldset-wrapper {
+    .webform-flexbox {
+      margin-bottom: 1em;
+    }
+  }
+
+  .form-wrapper {
+    margin: 0;
+    gap: $gap;
+    flex-wrap: wrap;
+
+    .webform-flex--container {
+      margin: 0;
+    }
+  }
+
+  .field {
+    .field-prefix, .field-suffix {
+      display: block;
+    }
+
+    .field-prefix {
+      margin-bottom: toRem(8);
+    }
+
+    .field-suffix {
+      margin-top: toRem(8);
+    }
+
+    .description {
+      margin: toRem(8) 0;
+    }
+
+    .help {
+      font-size: toRem(12);
+
+      &.is-danger {
+        color: $red;
+      }
+    }
+
+    input.form-autocomplete {
+      background-position: calc(100% - #{toRem(8)}) center;
+    }
+  }
+
+  .iti {
+    width: 100%;
+  }
+
+  .select {
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.ui-widget-content {
+  overflow: hidden;
+  border-radius: toRem(4);
+
+  .ui-menu-item {
+    .ui-menu-item-wrapper {
+      width: 100%;
+      display: block;
+    }
+  }
+}

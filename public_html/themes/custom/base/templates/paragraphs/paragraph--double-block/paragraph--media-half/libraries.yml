@@ -1,0 +1,5 @@
+paragraph--media-half:
+  version: VERSION
+  css:
+    component:
+      paragraph--media-half.css: {}

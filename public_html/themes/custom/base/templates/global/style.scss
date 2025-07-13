@@ -1,0 +1,14 @@
+// Import global sass here.
+// Styling here are loaded on every page.
+
+@charset "UTF-8";
+
+@import "../base/_base.scss";
+@import "global-bulma";
+@import "global-buttons";
+@import "global-defaults";
+@import "global-drupal-toolbar";
+@import "global-fontawesome";
+@import "global-fontsmoothing";
+@import "global-fonts";
+@import "global-typography";

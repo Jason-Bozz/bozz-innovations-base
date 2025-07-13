@@ -1,0 +1,21 @@
+{{ attach_library('base/hero') }}
+
+<section class="hero">
+  <div class="container is-fullhd">
+    <div class="columns is-multiline">
+      {% if drupal_breadcrumb()['#links']|length > 0 %}
+      <div class="column is-12 is-hidden-touch">
+        {{ drupal_breadcrumb() }}
+      </div>
+      {% endif %}
+      <div class="column is-12">
+        <h1>{{ node.getTitle()|default(name) }}</h1>
+        {% if content.field_global_intro or intro %}
+        <p class="lead">
+          {{ content.field_global_intro|default(intro) }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

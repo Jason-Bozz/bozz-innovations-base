@@ -1,0 +1,191 @@
+@use 'sass:math';
+
+@import "../base/_base.scss";
+
+$colors: (
+  primary: ($d_blue, $white),
+  info: ($d_blue, $white),
+  success: ($d_blue, $white),
+  warning: ($d_blue, $white),
+  danger: ($d_blue, $white)
+);
+
+$radius: 0.25rem !default;
+
+$easing: cubic-bezier(0.5, 0, 0.1, 1) !default;
+
+$speed-slow: 150ms !default;
+$speed-slower: 250ms !default;
+
+$checkbox-active-background-color: $d_blue !default;
+$checkbox-background-color: transparent !default;
+$checkbox-border-color: lighten($black, 80%) !default;
+$checkbox-border-radius: $radius !default;
+$checkbox-border-width: 2px !default;
+$checkbox-checkmark-color: $white !default;
+$checkbox-size: 1.25rem !default;
+$checkbox-colors: $colors !default;
+
+$control-padding-horizontal: 0.75rem !default;
+
+// Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @return if($index,
+    str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace),
+    $string);
+}
+
+// Encode svg function by http://codepen.io/jakob-e/pen/doMoML
+@function svg-encode($svg) {
+  // Chunk up string in order to avoid "stack level too deep" error
+  $encoded: '';
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(math.div(str-length($svg), $slice));
+
+  @for $i from 1 through $loops {
+    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    // Encode
+    $chunk: str-replace($chunk, '"', '\'');
+    $chunk: str-replace($chunk, '%', '%25');
+    $chunk: str-replace($chunk, '#', '%23');
+    $chunk: str-replace($chunk, '{', '%7B');
+    $chunk: str-replace($chunk, '}', '%7D');
+    $chunk: str-replace($chunk, '<', '%3C');
+    $chunk: str-replace($chunk, '>', '%3E');
+
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+
+  @return "data:image/svg+xml,#{$encoded}";
+}
+
+@function checkmark($color) {
+  $start: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">';
+  $content: '<path style="fill:#{$color}" d="M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z"></path>';
+  $end: '</svg>';
+
+  @return svg-encode("#{$start}#{$content}#{$end}");
+}
+
+@function indeterminate($color) {
+  $start: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">';
+  $content: '<rect style="fill:#{$color}" width="0.7" height="0.2" x=".15" y=".4"></rect>';
+  $end: '</svg>';
+
+  @return svg-encode("#{$start}#{$content}#{$end}");
+}
+
+.b-checkbox {
+
+  &.checkbox {
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+
+    &:not(.button) {
+      margin-right: 0.5rem;
+
+      &+.checkbox:last-child {
+        margin-right: 0;
+      }
+    }
+
+    input[type=checkbox] {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      outline: none;
+      z-index: -1;
+
+      +.check {
+        width: $checkbox-size;
+        height: $checkbox-size;
+        flex-shrink: 0;
+        border-radius: $checkbox-border-radius;
+        border: $checkbox-border-width solid $checkbox-border-color;
+        transition: background $speed-slow $easing, border-color $speed-slow $easing;
+        background: $checkbox-background-color;
+      }
+
+      &:focus + .check {
+        box-shadow: 0 0 0 0.2rem $d_bluelight;
+      }
+
+      &:checked+.check {
+        background: $checkbox-active-background-color url(checkmark($checkbox-checkmark-color)) no-repeat center center;
+        background-size: 0.75rem auto;
+        border-color: $checkbox-active-background-color;
+
+        @each $name, $pair in $checkbox-colors {
+          $color: nth($pair, 1);
+          $color-invert: nth($pair, 2);
+
+          &.is-#{$name} {
+            background: $color url(checkmark($color-invert)) no-repeat center center;
+            background-size: 0.75rem auto;
+            border-color: $color;
+          }
+        }
+      }
+
+      &:indeterminate+.check,
+      &.is-indeterminate+.check {
+        background: $checkbox-active-background-color url(indeterminate($checkbox-checkmark-color)) no-repeat center center;
+        background-size: 0.75rem auto;
+        border-color: $checkbox-active-background-color;
+
+        @each $name, $pair in $checkbox-colors {
+          $color: nth($pair, 1);
+          $color-invert: nth($pair, 2);
+
+          &.is-#{$name} {
+            background: $color url(indeterminate($color-invert)) no-repeat center center;
+            background-size: 0.75rem auto;
+            border-color: $color;
+          }
+        }
+      }
+
+      &:focus {
+        &:checked+.check {
+          @each $name, $pair in $checkbox-colors {
+            $color: nth($pair, 1);
+          }
+        }
+      }
+    }
+
+    .control-label {
+      padding-left: $control-padding-horizontal;
+
+      .label {
+        cursor: pointer;
+      }
+    }
+
+    &.button {
+      display: flex;
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+
+    &:hover {
+      input[type=checkbox]:not(:disabled)+.check {
+        border-color: $checkbox-active-background-color;
+
+        @each $name, $pair in $checkbox-colors {
+          $color: nth($pair, 1);
+
+          &.is-#{$name} {
+            border-color: $color;
+          }
+        }
+      }
+    }
+  }
+}

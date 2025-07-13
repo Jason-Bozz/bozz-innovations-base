@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Preprocesses for the image media element.
+ */
+
+/**
+ * Implements hook_preprocess_image_style().
+ *
+ * Add img-responsive class to all images with a image-style.
+ */
+function base_preprocess_image_style(array &$variables) {
+  $stylesToExclude = [];
+  if (in_array($variables["style_name"], $stylesToExclude)) {
+    return;
+  }
+  else {
+    $variables["image"]['#attributes']['class'][] = 'img-responsive';
+  }
+}

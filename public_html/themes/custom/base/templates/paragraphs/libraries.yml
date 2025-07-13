@@ -1,0 +1,5 @@
+paragraph:
+  version: VERSION
+  css:
+    component:
+      paragraph.css: {}

@@ -1,0 +1,10 @@
+node--news-item--full:
+  version: VERSION
+  css:
+    component:
+      node--news--full.css: {}
+node--news-overview--full:
+  version: VERSION
+  css:
+    component:
+      node--news-overview--full.css: {}

@@ -1,0 +1,222 @@
+@import "../../base/_base.scss";
+
+html:has(#mobilemenu[data-open="true"]), body:has(#mobilemenu[data-open="true"]) {
+  overflow: hidden;
+}
+
+#mobilemenu {
+  overflow: hidden;
+
+  z-index: 600;
+
+  position: fixed;
+  top: toRem(68);
+  left: 0;
+
+  width: 100%;
+  height: calc(100dvh - #{toRem(68)});
+
+  background-color: $white;
+
+  translate: 100vw;
+  transition: translate 0.3s ease;
+
+  &.is-active {
+    translate: 0;
+  }
+
+  ul {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    li {
+      position: relative;
+      display: flex;
+      width: 100%;
+      color: $black;
+      padding: toRem(12) toRem(24);
+      min-height: toRem(68);
+      overflow: hidden;
+      align-items: center;
+
+      color: $black;
+      font-size: toRem(20);
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      &.active {
+        &::before {
+          content: "";
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          width: toRem(4);
+          height: 100%;
+
+          background-color: $d_bluelight;
+        }
+      }
+
+      &.utilities {
+        font-size: toRem(16);
+        font-weight: 600;
+      }
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: toRem(1);
+
+        background-color: rgba($black, 0.2);
+      }
+    }
+  }
+}
+
+#mobilemenu.slide {
+  ul {
+    li.dropdown {
+      .arrow {
+        margin-left: auto;
+        width: toRem(44);
+        height: toRem(44);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: toRem(28);
+
+        &::before {
+          content: "\f061";
+          font-family: $fontawesome;
+          font-weight: 400;
+        }
+      }
+      ul {
+        z-index: 700;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100%;
+        background-color: $white;
+        transition: translate 0.3s ease;
+        translate: 100vw;
+
+        .back {
+          font-size: toRem(20);
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          display: flex;
+          flex-wrap: wrap;
+          gap: toRem(8);
+          align-items: center;
+          width: 100%;
+
+          &::before {
+            content: "\f060";
+            font-family: $fontawesome;
+            font-weight: 400;
+            width: toRem(44);
+            height: toRem(44);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: toRem(28);
+          }
+        }
+
+        &.is-active {
+          translate: 0;
+        }
+      }
+    }
+  }
+}
+
+#mobilemenu.dropdown {
+  ul {
+    li.dropdown {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      overflow: hidden;
+      height: toRem(68);
+      transition: height 0.3s ease, background-color 0.3s ease;
+
+      &.is-active {
+        background-color: rgba($black, 0.05);
+
+        .arrow {
+          rotate: 180deg;
+        }
+      }
+
+      ul {
+        height: auto;
+        overflow: unset;
+      }
+
+      .arrow {
+        position: absolute;
+        top: toRem(12);
+        right: toRem(24);
+        width: toRem(44);
+        height: toRem(44);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: toRem(28);
+        transition: rotate 0.3s ease;
+
+        &::before {
+          content: "\f078";
+          font-family: $fontawesome;
+          font-weight: 400;
+        }
+      }
+
+      &::after {
+        display: none;
+      }
+
+      & > a:first-child {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        padding: toRem(12) toRem(24);
+        min-height: toRem(68);
+
+        &::after {
+          content: "";
+
+          position: absolute;
+          left: 0;
+          bottom: 0;
+
+          width: 100%;
+          height: toRem(1);
+
+          background-color: rgba($black, 0.2);
+        }
+      }
+    }
+  }
+}

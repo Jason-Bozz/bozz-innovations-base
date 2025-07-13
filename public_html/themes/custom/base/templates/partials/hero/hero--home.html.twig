@@ -1,0 +1,16 @@
+{{ attach_library('base/hero') }}
+
+<section class="hero hero-home">
+  <div class="container is-fullhd">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h1>{{ name|default(node.getTitle()) }}</h1>
+        {% if content.field_global_intro or intro %}
+        <p class="lead">
+          {{ intro|default(content.field_global_intro) }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

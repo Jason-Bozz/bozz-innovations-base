@@ -1,0 +1,5 @@
+node--home:
+  version: version
+  css:
+    component:
+      node--home--full.css: {}

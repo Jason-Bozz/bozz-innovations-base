@@ -1,0 +1,6 @@
+<a class="searchresults__block" href="{{ url }}">
+  <h3>{{ label }}</h3>
+  {% if content.field_global_intro.0 is defined %}
+    <p>{{ content.field_global_intro.0 }}</p>
+  {% endif %}
+</a>

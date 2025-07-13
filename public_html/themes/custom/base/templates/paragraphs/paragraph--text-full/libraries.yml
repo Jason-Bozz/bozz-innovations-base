@@ -1,0 +1,5 @@
+paragraph--text-full:
+  version: VERSION
+  css:
+    component:
+      paragraph--text-full.css: {}

@@ -1,0 +1,51 @@
+{{ attach_library('base/page') }}
+<header id="navbar">
+  <div class="container is-fullhd">
+    <div class="columns is-multiline is-mobile is-vcentered">
+      <div class="column is-12 is-flex is-justify-content-end is-hidden-touch">
+        {{ page.header.base_utilities }}
+      </div>
+
+      <div class="column is-3">
+        <a class="logo" href="{{ url('<front>') }}">
+          <span class="is-sr-only">
+            {{ drupal_config('system.site', 'name') }}
+          </span>
+          <img
+            src="/assets/images/logos/drupal-droplet-white.svg"
+            alt="Logo"
+            class="img-responsive"/>
+        </a>
+      </div>
+
+      <div class="column is-9 is-flex is-justify-content-end">
+        <button class="hamburger is-hidden-desktop">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div
+          id="navbar-header">
+          {# Main menu, see: menu/menu--main #}
+          {{ page.header.base_main_menu }}
+          {{ page.header.base_primary_local_tasks }}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{# Content, see: node/node--{CONTENT_TYPE} #}
+{{ page.content }}
+
+<footer>
+  <div class="container is-fullhd">
+    <div class="columns">
+      <div
+        class="column is-12">
+        {# Footer menu, see: menu/menu--footer #}
+        {{ page.footer }}
+      </div>
+    </div>
+  </div>
+</footer>

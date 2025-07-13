@@ -1,0 +1,15 @@
+@import "../base/_base.scss";
+
+.select2-container {
+  .select2-selection--single {
+    height: toRem(40);
+    border-color: hsl(221, 14%, calc(86% + 0%));
+    border-radius: toRem(6);
+    .select2-selection__rendered {
+      padding: toRem(5) toRem(10);
+    }
+    .select2-selection__arrow {
+      display: none;
+    }
+  }
+}

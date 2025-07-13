@@ -1,0 +1,7 @@
+menu--utilities:
+  version: VERSION
+  css:
+    component:
+      menu--utilities.css: {}
+  js:
+    menu--utilities.js: {}

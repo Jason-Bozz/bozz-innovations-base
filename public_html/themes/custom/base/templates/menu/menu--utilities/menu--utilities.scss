@@ -1,0 +1,18 @@
+@import "../../base/_base.scss";
+
+#block-base-utilities {
+  #utilities {
+
+    li {
+      a {
+        color: $white;
+        font-weight: 600;
+
+        &.is-active,
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

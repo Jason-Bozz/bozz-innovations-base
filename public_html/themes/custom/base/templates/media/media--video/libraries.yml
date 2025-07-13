@@ -1,0 +1,9 @@
+media--video:
+  version: VERSION
+  css:
+    component:
+      media--video.css: {}
+  js:
+    media--video.js: {}
+  dependencies:
+    - core/drupal

@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% block before %}
+  {{ attach_library('base/media--video') }}
+{% endblock %}
+
+{% set classes = [
+  'media',
+  'media--type-' ~ (media.bundle()|clean_class),
+  'embedded-video',
+  'video-' ~ unique_id,
+  not media.isPublished() ? 'media--unpublished',
+  view_mode ? 'media--view-mode-' ~ (view_mode.id()|clean_class)
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="media__video">
+    <button aria-label="Speel video af" class="play_button" id="play"><span><i aria-hidden='true' class="fa-solid fa-play"></i></span></button>
+    {% if content.field_media_oembed_thumbnail[0] is defined %}
+      <div class="media__video--thumbnail thumbnail-{{ unique_id }}">
+        <figure>
+        {{ content.field_media_oembed_thumbnail[0] }}
+        </figure>
+      </div>
+    {% endif %}
+    <div data-src="{{ content.field_media_oembed_video.0["#attributes"].src }}" id="video" class="media__video--embed"></div>
+  </div>
+  <div class="cookie-alert">
+    <div class="cookie-alert__content">
+      <span class="cookie-alert__content--text">{{ 'Accept social cookies to show this video.'|t }}</span>
+      <button title="{{ 'Accept social cookies to show this video.'|t }}" id="cookie-accept" class="cookie-alert__content--accept button">{{ 'Click here to accept'|t }}</button>
+    </div>
+  </div>
+</div>

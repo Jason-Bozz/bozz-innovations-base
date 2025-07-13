@@ -1,0 +1,46 @@
+<mjml lang="{{ language }}">
+  <mj-head>
+    <mj-title>{{ message['subject'] }}</mj-title>
+  </mj-head>
+  <mj-body background-color="#E1E8ED">
+    <mj-raw >
+      <!-- Header -->
+    </mj-raw>
+    <mj-section padding-bottom="0px" background-color="#E1E8ED">
+      <mj-column width="100%">
+        <mj-divider padding-top="20px" padding-bottom="0px" padding-left="0px" padding-right="0px" border-width="1px" border-color="#f8f8f8"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-bottom="0px" background-color="white">
+      <mj-column width="100%">
+        <mj-image src="{{ drupal_url('assets/images/logos/logo.png') }}" alt="{{ drupal_token('site:name') }}" width="50px"></mj-image>
+        <mj-divider padding-top="20px" padding-bottom="0px" padding-left="0px" padding-right="0px" border-width="1px" border-color="#f8f8f8"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      <!-- Body -->
+    </mj-raw>
+    <mj-section background-color="#f3f3f3">
+      <mj-column>
+        <mj-text font-size="16px">{{ message['body'] }}</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+      <!-- Footer -->
+    </mj-raw>
+    <mj-section background-color="white">
+      <mj-column>
+        <mj-text font-size="13px">
+            {{ "This mail has been send by @name"|t({
+              '@name': drupal_token('site:name')
+            }) }}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding-bottom="0px" background-color="#E1E8ED">
+      <mj-column width="100%">
+        <mj-divider padding-bottom="20px" padding-bottom="0px" padding-left="0px" padding-right="0px" border-width="1px" border-color="#E1E8ED"></mj-divider>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -1,0 +1,5 @@
+paragraph--video:
+  version: VERSION
+  css:
+    component:
+      paragraph--video.css: {}

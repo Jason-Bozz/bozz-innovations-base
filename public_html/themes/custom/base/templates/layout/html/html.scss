@@ -1,0 +1,150 @@
+// Status messages
+$status: #1aa777;
+$warning: #f5aa2e;
+$error: #db3e39;
+
+div[data-drupal-messages] {
+  max-width: 500px;
+  width: 100%;
+  z-index: 999;
+  margin-bottom: 30px;
+  position: fixed;
+  right: 0;
+  top: 10vh;
+
+  div[role=alert] {
+    display: flex;
+  }
+
+  .messages {
+    padding: 0.9375rem 1.25rem;
+    border: unset;
+    border-left: 8px solid #000;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    color: #161616;
+    border-color: unset;
+    background-color: #fff;
+    background-image: unset;
+    box-shadow: 10px 10px 25px 0 rgb(0 0 0 / 15%);
+    position: relative;
+
+    .messages__list {
+      margin: 0;
+      padding: 0;
+
+      .messages__item {
+        max-height: 20px;
+        overflow: hidden;
+      }
+    }
+
+    &.show {
+      display: flex;
+      align-items: center;
+    }
+
+    &.fade {
+      animation: fade-in .3s ease-in-out forwards;
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.fade-out {
+      animation: fade-out .3s ease-in-out forwards;
+
+      @keyframes fade-out {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+    }
+
+    &__info {
+      display: flex;
+      padding: 0 1.875rem 0 0;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__inner {
+      position: relative;
+      display: flex;
+      gap: 20px;
+
+      &:before {
+        font-size: 2.1875rem;
+        font-family: "Font Awesome 6 Pro";
+      }
+    }
+
+
+    &--status {
+      border-color: $status !important;
+
+      .messages__inner {
+        &:before {
+          content: "\f058";
+          color: $status;
+        }
+      }
+    }
+
+    &--warning {
+      border-color: $warning !important;
+
+      .messages__inner {
+        &:before {
+          content: "\f071";
+          color: $warning;
+        }
+      }
+    }
+
+    &--error {
+      border-color: $error !important;
+
+      .messages__inner {
+        &:before {
+          content: "\f071";
+          color: $error;
+        }
+      }
+    }
+
+    .button-message-close {
+      cursor: pointer;
+      border: none;
+      font-size: 25px;
+      color: #000;
+      background: transparent;
+      height: auto;
+      width: auto;
+      padding: 0;
+
+      &:hover {
+        color: #555;
+      }
+    }
+
+    a {
+      font-style: initial;
+      font-weight: bold;
+    }
+  }
+}

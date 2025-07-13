@@ -1,0 +1,39 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/paragraph--faq') }}
+{% endblock %}
+
+{% block paragraph %}
+{% set classes = classes|merge([
+    'is-8-widescreen',
+    'is-10-desktop',
+    'is-12',
+  ]) %}
+
+{% if paragraph.paragraph_type != paragraph.previous_paragraph_type %}
+<div{{ attributes.addClass(classes) }}>
+  {% endif %}
+  <details id="faq-{{ paragraph.id() }}">
+
+    <summary class="test">
+      {{ content.field_question }}
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 19 10">
+        <path fill="#000" fill-rule="evenodd"
+          d="m9.25 0 .784.687L18.5 8.114 16.932 10 9.25 3.259 1.568 10 0 8.114 8.466.687z" />
+      </svg>
+    </summary>
+    <div class="faq__item">
+
+      <div class="faq__body">
+        {{ content.field_answer }}
+        {% if content.field_link %}
+        {{ content.field_link }}
+        {% endif %}
+      </div>
+    </div>
+  </details>
+  {% if paragraph.paragraph_type != paragraph.next_paragraph_type %}
+  </div>
+  {% endif %}
+  {% endblock %}

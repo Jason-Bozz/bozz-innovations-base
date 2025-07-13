@@ -1,0 +1,17 @@
+@import "../../base/_base.scss";
+
+.paragraph--quote {
+  blockquote {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    q {
+      margin: 0;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    cite {}
+  }
+}

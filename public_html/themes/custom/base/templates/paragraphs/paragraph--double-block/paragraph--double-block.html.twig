@@ -1,0 +1,17 @@
+{% extends 'paragraph.html.twig' %}
+
+{% block before %}
+  {{ attach_library('base/paragraph--double-block') }}
+{% endblock %}
+
+{# This block can contain images, videos and text. #}
+{% block paragraph %}
+  {% set classes = classes|merge([
+    'is-12',
+  ]) %}
+  <div{{ attributes.addClass(classes) }}>
+  <div class="columns">
+    {{ content.field_double_block_items }}
+    </div>
+  </div>
+{% endblock %}

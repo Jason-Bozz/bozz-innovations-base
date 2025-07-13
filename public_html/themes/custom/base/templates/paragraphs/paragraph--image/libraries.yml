@@ -1,0 +1,5 @@
+paragraph--image:
+  version: VERSION
+  css:
+    component:
+      paragraph--image.css: {}

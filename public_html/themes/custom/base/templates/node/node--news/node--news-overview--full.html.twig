@@ -1,0 +1,40 @@
+{% extends 'node.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/node--news-overview--full') }}
+{% endblock %}
+
+{% block node %}
+<main id="main" class="content-page">
+  <section class="hero">
+    <div class="container is-fullhd">
+      <div class="columns">
+
+        {% if drupal_breadcrumb()['#links']|length > 0 %}
+        <div class="column is-12 is-hidden is-flex-mobile">
+          {{ drupal_breadcrumb() }}
+        </div>
+        {% endif %}
+        <div class="column is-12">
+          {{ drupal_breadcrumb() }}
+          <div class="hero__intro">
+            <h1>{{ node.getTitle() }}</h1>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="contentblock">
+    <div class="container is-fullhd">
+      <div class='columns'>
+        <div class='column is-12'>
+          {{ drupal_view('news', 'overview') }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{# {% block after %}{% endblock %} #}

@@ -1,0 +1,5 @@
+node--contact:
+  version: version
+  css:
+    component:
+      node--contact--full.css: {}

@@ -10,4 +10,8 @@
  * @see template_preprocess_input()
  */
 #}
-<input{{ attributes }} />{{ children }}
+{% set classes = [
+    'input',
+    attributes["aria-invalid"] ? 'is-danger',
+  ] %}
+<input{{ attributes.addClass(classes) }} />{{ children }}

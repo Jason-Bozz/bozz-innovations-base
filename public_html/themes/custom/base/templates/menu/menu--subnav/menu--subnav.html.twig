@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/1.x/tags/macro.html
+#}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% set cols = 6 %}
+    {% for item in items %}
+      {% if menu_level == 0 and item.in_active_trail and item.below %}
+
+        <h3>{{ item.title }}</h3>
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      {% elseif menu_level == 1 %}
+        {% if loop.index0 % cols == 0 %}
+          {% if menu_level == 0 %}
+            <ul{{ attributes.addClass(['nav']).setAttribute('id', 'footer-nav') }}>
+          {% else %}
+            <ul>
+          {% endif %}
+        {% endif %}
+
+        <li{{ item.attributes.addClass(classes) }}>
+          {{ link(item.title, item.url, item.attributes.addClass("nav-link")) }}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1, true) }}
+          {% endif %}
+        </li>
+
+        {% if (loop.index0 % cols == cols - 1 or loop.last) %}
+          </ul>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if menu_level == 0 and item.in_active_trail and item.below %}
+
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+
+{% set first = items|first %}
+{% set has_children = first.in_active_trail and first.below %}
+
+{% if has_children %}
+{{ attach_library('base/menu--subnav') }}
+
+<section class="subnav">
+  <div class="container is-fullhd">
+    <div class="columns">
+      <div class="column is-10">
+        <div id="navbar-subnav" class="animation slide-in">
+          {{ menus.menu_links(items, attributes, 0) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

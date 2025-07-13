@@ -1,0 +1,5 @@
+paragraph--download:
+  version: VERSION
+  css:
+    component:
+      paragraph--download.css: {}

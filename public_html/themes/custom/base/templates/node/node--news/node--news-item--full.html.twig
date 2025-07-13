@@ -1,0 +1,14 @@
+{% extends 'node.html.twig' %}
+
+{% block before %}
+{{ attach_library('base/node--news-item--full') }}
+{% endblock %}
+
+{% block node %}
+<main id="main" class="content-page">
+  {% include "@base/templates/partials/hero/hero.html.twig" %}
+  {% include "@base/templates/partials/content-section.html.twig" %}
+</main>
+{% endblock %}
+
+{# {% block after %}{% endblock %} #}
