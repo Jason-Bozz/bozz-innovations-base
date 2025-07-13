@@ -1,0 +1,10 @@
+# source source "$(dirname "$0")/common.sh"
+# log "\e[36m---------- Running npm command ----------\e[39m"
+
+# log "Go to the project root"
+# cd "${PWD}" || exit 1;
+
+# log "run npm command"
+# npm $@
+
+# log "\e[36m---------- npm command completed ----------\e[39m"

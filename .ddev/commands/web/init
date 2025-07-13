@@ -1,0 +1,13 @@
+source "$(dirname "$0")/common.sh"
+log "\e[36m---------- Running init ----------\e[39m"
+
+log "Go to the project root"
+cd "${PWD}" || exit 1;
+
+composer i
+
+npm install && npm run build
+
+drush cr
+
+log "\e[36m---------- Init completed ----------\e[39m"

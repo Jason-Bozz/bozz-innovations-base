@@ -1,0 +1,7 @@
+source "$(dirname "$0")/common.sh"
+log "\e[36m---------- Running wach ----------\e[39m"
+
+cd "${PWD}" || exit 1;
+
+log "npm run watch"
+nmp run watch
